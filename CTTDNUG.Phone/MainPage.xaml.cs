@@ -15,20 +15,23 @@ namespace CTTDNUG.Phone
 {
     public partial class MainPage : PhoneApplicationPage
     {
+        // Constructor
         public MainPage()
         {
             InitializeComponent();
-            this.DataContext = new MainDataViewModel();
+
+            // Set the data context of the listbox control to the sample data
+            DataContext = App.ViewModel;
+            this.Loaded += new RoutedEventHandler(MainPage_Loaded);
         }
 
-		private void ApplicationBarIconButton_Click(object sender, EventArgs e)
+        // Load data for the ViewModel Items
+        private void MainPage_Loaded(object sender, RoutedEventArgs e)
         {
-            this.slideView.MoveToPreviousItem();
-        }
-
-        private void ApplicationBarIconButton_Click_1(object sender, EventArgs e)
-        {
-            this.slideView.MoveToNextItem();
+            if (!App.ViewModel.IsDataLoaded)
+            {
+                App.ViewModel.LoadData();
+            }
         }
     }
 }
