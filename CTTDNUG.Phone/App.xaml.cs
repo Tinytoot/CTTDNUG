@@ -12,23 +12,30 @@ using System.Windows.Navigation;
 using System.Windows.Shapes;
 using Microsoft.Phone.Controls;
 using Microsoft.Phone.Shell;
-using Telerik.Windows.Controls;
 
 namespace CTTDNUG.Phone
 {
     public partial class App : Application
     {
-        /// <summary>
-        /// Component used to handle unhandle exceptions, to collect runtime info and to send email to developer.
-        /// </summary>
-		public RadDiagnostics diagnostics;
-        /// <summary>
-        /// Component used to raise a notification to the end users to rate the application on the marketplace.
-        /// </summary>
-        public RadRateApplicationReminder rateReminder;
+        private static MainViewModel viewModel = null;
 
-        
-		/// <summary>
+        /// <summary>
+        /// A static ViewModel used by the views to bind against.
+        /// </summary>
+        /// <returns>The MainViewModel object.</returns>
+        public static MainViewModel ViewModel
+        {
+            get
+            {
+                // Delay creation of the view model until necessary
+                if (viewModel == null)
+                    viewModel = new MainViewModel();
+
+                return viewModel;
+            }
+        }
+
+        /// <summary>
         /// Provides easy access to the root frame of the Phone Application.
         /// </summary>
         /// <returns>The root frame of the Phone Application.</returns>
@@ -58,59 +65,40 @@ namespace CTTDNUG.Phone
                 //Application.Current.Host.Settings.EnableRedrawRegions = true;
 
                 // Enable non-production analysis visualization mode, 
-                // which shows areas of a page that are being GPU accelerated with a colored overlay.
+                // which shows areas of a page that are handed off to GPU with a colored overlay.
                 //Application.Current.Host.Settings.EnableCacheVisualization = true;
 
-				// Disable the application idle detection by setting the UserIdleDetectionMode property of the
+                // Disable the application idle detection by setting the UserIdleDetectionMode property of the
                 // application's PhoneApplicationService object to Disabled.
                 // Caution:- Use this under debug mode only. Application that disables user idle detection will continue to run
                 // and consume battery power when the user is not using the phone.
                 PhoneApplicationService.Current.UserIdleDetectionMode = IdleDetectionMode.Disabled;
             }
 
-			//Creates an instance of the Diagnostics component.
-            diagnostics = new RadDiagnostics();
-
-            //Defines the default email where the diagnostics info will be send.
-            diagnostics.EmailTo = "Me@MyCompany.com";
-
-            //Initializes this instance.
-            diagnostics.Init();
-        
-		      //Creates a new instance of the RadRateApplicationReminder component.
-            rateReminder = new RadRateApplicationReminder();
-
-            //Sets how often the rate reminder is displayed.
-            rateReminder.RecurrencePerUsageCount = 2;
-    
         }
 
         // Code to execute when the application is launching (eg, from Start)
         // This code will not execute when the application is reactivated
         private void Application_Launching(object sender, LaunchingEventArgs e)
         {
-            //Before using any of the ApplicationBuildingBlocks, this class should be initialized with the version of the application.
-            ApplicationUsageHelper.Init("1.0");
-        
-		}
+        }
 
         // Code to execute when the application is activated (brought to foreground)
         // This code will not execute when the application is first launched
         private void Application_Activated(object sender, ActivatedEventArgs e)
         {
-            if (!e.IsApplicationInstancePreserved)
+            // Ensure that application state is restored appropriately
+            if (!App.ViewModel.IsDataLoaded)
             {
-                //This will ensure that the ApplicationUsageHelper is initialized again if the application has been in Tombstoned state.
-                ApplicationUsageHelper.OnApplicationActivated();
-            } 
- 
+                App.ViewModel.LoadData();
+            }
         }
 
         // Code to execute when the application is deactivated (sent to background)
         // This code will not execute when the application is closing
         private void Application_Deactivated(object sender, DeactivatedEventArgs e)
         {
-			// Ensure that required application state is persisted here.
+            // Ensure that required application state is persisted here.
         }
 
         // Code to execute when the application is closing (eg, user hit Back)
@@ -152,7 +140,7 @@ namespace CTTDNUG.Phone
 
             // Create the frame but don't set it as RootVisual yet; this allows the splash
             // screen to remain active until the application is ready to render.
-            RootFrame = new RadPhoneApplicationFrame();
+            RootFrame = new PhoneApplicationFrame();
             RootFrame.Navigated += CompleteInitializePhoneApplication;
 
             // Handle navigation failures
