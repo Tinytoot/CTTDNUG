@@ -43,17 +43,22 @@
             <!--Use 'Orientation="Horizontal"' to enable a panel that lays out horizontally-->
             <controls:PanoramaItem Header="Chatter">
                 <!--Double line list with image placeholder and text wrapping-->
-                <ListBox Margin="0,0,-12,0" ItemsSource="{Binding Items}">
+                <ListBox Margin="0,0,-12,0" ItemsSource="{Binding Tweets}" >
+                    <ListBox.Background>
+                        <SolidColorBrush Color="Black" Opacity=".75"/>
+                    </ListBox.Background>
                     <ListBox.ItemTemplate>
                         <DataTemplate>
-                            <StackPanel Orientation="Horizontal" Margin="0,0,0,17">
-                                <!--Replace rectangle with image-->
-                                <Rectangle Height="100" Width="100" Fill="#FFE5001b" Margin="12,0,9,0"/>
-                                <StackPanel Width="311">                                    
-                                    <TextBlock Text="{Binding LineOne}" TextWrapping="Wrap" Style="{StaticResource PhoneTextExtraLargeStyle}"/>
-                                    <TextBlock Text="{Binding LineTwo}" TextWrapping="Wrap" Margin="12,-6,12,0" Style="{StaticResource PhoneTextSubtleStyle}"/>
+                            <Border Background="SlateBlue" Margin="0,0,0,17" >
+                                <StackPanel Orientation="Horizontal" >
+                                    <!--Replace rectangle with image-->
+                                    <Image Height="100" Width="100" Source="{Binding profile_image_url}" Margin="12,0,9,0" Opacity="1"/>
+                                    <StackPanel Width="311">
+                                        <TextBlock Text="{Binding from_user_name}" TextWrapping="Wrap" Style="{StaticResource PhoneTextExtraLargeStyle}"/>
+                                        <TextBlock Text="{Binding text}" TextWrapping="Wrap" Margin="12,-6,12,0" Style="{StaticResource PhoneTextSubtleStyle}"/>
+                                    </StackPanel>
                                 </StackPanel>
-                            </StackPanel>
+                            </Border>
                         </DataTemplate>
                     </ListBox.ItemTemplate>
                 </ListBox>

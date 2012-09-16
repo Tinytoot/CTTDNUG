@@ -12,6 +12,7 @@ using System.Windows.Navigation;
 using System.Windows.Shapes;
 using Microsoft.Phone.Controls;
 using Microsoft.Phone.Shell;
+using CTTDNUG.Data;
 
 namespace CTTDNUG.Phone
 {
@@ -81,6 +82,7 @@ namespace CTTDNUG.Phone
         // This code will not execute when the application is reactivated
         private void Application_Launching(object sender, LaunchingEventArgs e)
         {
+   
         }
 
         // Code to execute when the application is activated (brought to foreground)

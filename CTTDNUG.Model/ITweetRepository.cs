@@ -7,7 +7,7 @@ namespace CTTDNUG.Model
 {
     public interface ITweetRepository
     {
-        IList<Tweet> GetTweets(string searchPattern);
-        
+    
+        void GetTweets(string searchPattern);  
     }
 }

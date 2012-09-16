@@ -101,9 +101,13 @@
     <Folder Include="Interface\" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\CTTDNUG.Business\CTTDNUG.Business.csproj">
-      <Project>{D0D1DA45-7C4B-4D52-A0AB-3906E43AE4D5}</Project>
-      <Name>CTTDNUG.Business</Name>
+    <ProjectReference Include="..\CTTDNUG.Data\CTTDNUG.Data.csproj">
+      <Project>{0D257746-7B8C-4EDF-A894-4B20AE18CC41}</Project>
+      <Name>CTTDNUG.Data</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\CTTDNUG.Model\CTTDNUG.Model.csproj">
+      <Project>{70BFA376-1A9F-41B4-86AA-DAED013AAD59}</Project>
+      <Name>CTTDNUG.Model</Name>
     </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildExtensionsPath)\Microsoft\Silverlight for Phone\$(TargetFrameworkVersion)\Microsoft.Silverlight.$(TargetFrameworkProfile).Overrides.targets" />
