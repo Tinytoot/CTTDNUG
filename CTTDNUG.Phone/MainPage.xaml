@@ -56,6 +56,7 @@
                                     <StackPanel Width="311">
                                         <TextBlock Text="{Binding from_user_name}" TextWrapping="Wrap" Style="{StaticResource PhoneTextExtraLargeStyle}"/>
                                         <TextBlock Text="{Binding text}" TextWrapping="Wrap" Margin="12,-6,12,0" Style="{StaticResource PhoneTextSubtleStyle}"/>
+                                        <TextBlock Text="{Binding created_at}" TextWrapping="Wrap" Margin="12,-6,12,0" Style="{StaticResource PhoneTextSubtleStyle}"/>
                                     </StackPanel>
                                 </StackPanel>
                             </Border>
