@@ -21,17 +21,20 @@ namespace CTTDNUG.Phone
             InitializeComponent();
 
             // Set the data context of the listbox control to the sample data
-            DataContext = App.ViewModel;
-            this.Loaded += new RoutedEventHandler(MainPage_Loaded);
-        }
+            DataContext = App.CttdnugVM;
 
-        // Load data for the ViewModel Items
-        private void MainPage_Loaded(object sender, RoutedEventArgs e)
+         }
+
+        protected override void OnNavigatedTo(System.Windows.Navigation.NavigationEventArgs e)
         {
-            if (!App.ViewModel.IsDataLoaded)
+            if (!App.CttdnugVM.IsDataLoaded)
             {
-                App.ViewModel.LoadData();
+                App.CttdnugVM.LoadData();
             }
+
+            base.OnNavigatedTo(e);
+
         }
+ 
     }
 }

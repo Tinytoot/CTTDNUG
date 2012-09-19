@@ -12,27 +12,27 @@ using System.Windows.Navigation;
 using System.Windows.Shapes;
 using Microsoft.Phone.Controls;
 using Microsoft.Phone.Shell;
-using CTTDNUG.Data;
+using CTTDNUG.Phone.ViewModels;
 
 namespace CTTDNUG.Phone
 {
     public partial class App : Application
     {
-        private static MainViewModel viewModel = null;
-
+        private static CTTDNUGViewModel cttdnugVM = null;
+        
         /// <summary>
         /// A static ViewModel used by the views to bind against.
         /// </summary>
         /// <returns>The MainViewModel object.</returns>
-        public static MainViewModel ViewModel
+        public static CTTDNUGViewModel CttdnugVM
         {
             get
             {
                 // Delay creation of the view model until necessary
-                if (viewModel == null)
-                    viewModel = new MainViewModel();
+                if (cttdnugVM == null)
+                    cttdnugVM = new CTTDNUGViewModel();
 
-                return viewModel;
+                return cttdnugVM;
             }
         }
 
@@ -89,11 +89,7 @@ namespace CTTDNUG.Phone
         // This code will not execute when the application is first launched
         private void Application_Activated(object sender, ActivatedEventArgs e)
         {
-            // Ensure that application state is restored appropriately
-            if (!App.ViewModel.IsDataLoaded)
-            {
-                App.ViewModel.LoadData();
-            }
+         
         }
 
         // Code to execute when the application is deactivated (sent to background)

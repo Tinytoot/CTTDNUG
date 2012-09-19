@@ -55,6 +55,10 @@
     <Reference Include="mscorlib.extensions" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="EventRepository.cs" />
+    <Compile Include="Helpers\AppSettings.cs" />
+    <Compile Include="IEventRepository.cs" />
+    <Compile Include="ITweetRepository.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="TweetRepository.cs" />
   </ItemGroup>
