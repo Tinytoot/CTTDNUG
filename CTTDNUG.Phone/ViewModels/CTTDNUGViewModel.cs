@@ -1,9 +1,7 @@
-﻿using System.ComponentModel;
-using System.Collections.ObjectModel;
-using CTTDNUG.Model;
+﻿using System.Collections.ObjectModel;
+using System.ComponentModel;
 using CTTDNUG.Data;
-using System.Collections.Generic;
-using System;
+using CTTDNUG.Model;
 
 
 namespace CTTDNUG.Phone.ViewModels
@@ -24,15 +22,15 @@ namespace CTTDNUG.Phone.ViewModels
             }
         }
 
-        private ObservableCollection<Event> eventsObs;
+        private ObservableCollection<Event> events;
         public ObservableCollection<Event> Events
         {
-            get { return eventsObs; }
+            get { return events; }
             set
             {
-                if(eventsObs != value)
+                if(events != value)
                 {
-                    eventsObs = value;
+                    events = value;
                     RaisePropertyChanged("Events");
                 }
             }
@@ -80,7 +78,7 @@ namespace CTTDNUG.Phone.ViewModels
         public void LoadData()
         {
             LoadTweets();
-     //       LoadEvents();
+            LoadEvents();
             this.IsDataLoaded = true;
         }
 
@@ -99,47 +97,9 @@ namespace CTTDNUG.Phone.ViewModels
             eventRepository.GetEvents();
         }
 
-        void GetCurrentEvents(List<EventBriteReponse> events)
+        void GetCurrentEvents(ObservableCollection<Event> response)
         {
-            foreach(EventBriteReponse response in events)
-            {
-                eventsObs.Add(new Event{
-                timezone= response.timezone,
-                organizer_url= response.url,
-                organizer_description= "",
-                organizer_long_description= "",
-                organizer_id = 0,
-                organizer_name = "",
-                event_id = response.id,
-                category = response.category,
-                capacity = response.capacity,
-                num_attendee_rows = response.num_attendee_rows,
-                title = response.title,
-                start_date = response.start_date,
-                status = response.status,
-                description = response.description,
-                end_date = response.end_date,
-                tags = response.tags,
-                timezone_offset = response.timezone_offset,
-                created = response.created,
-                event_url = response.url,
-                privacy = response.privacy,
-                venue_city = "",
-                venue_name = "",
-                venue_country = "",
-                venue_region = "",
-                longitude = 0,
-                postal_code = "" ,
-                address_2 = "",
-                address = "",
-                latitude = 0.0,
-                country_code = "",
-                venue_id = 0,
-                Lat_Long = ""
-                });
-
-            }
-
+            events = response;
             RaisePropertyChanged("Events");
                
         }

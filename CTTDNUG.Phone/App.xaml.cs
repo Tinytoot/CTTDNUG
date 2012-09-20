@@ -50,9 +50,6 @@ namespace CTTDNUG.Phone
             // Global handler for uncaught exceptions. 
             UnhandledException += Application_UnhandledException;
 
-            // Standard Silverlight initialization
-            InitializeComponent();
-
             // Phone-specific initialization
             InitializePhoneApplication();
 
@@ -73,7 +70,7 @@ namespace CTTDNUG.Phone
                 // application's PhoneApplicationService object to Disabled.
                 // Caution:- Use this under debug mode only. Application that disables user idle detection will continue to run
                 // and consume battery power when the user is not using the phone.
-                PhoneApplicationService.Current.UserIdleDetectionMode = IdleDetectionMode.Disabled;
+                //PhoneApplicationService.Current.UserIdleDetectionMode = IdleDetectionMode.Disabled;
             }
 
         }

@@ -1,8 +1,8 @@
-﻿using CTTDNUG.Model;
-using RestSharp;
-using Newtonsoft.Json;
-using System.Collections.ObjectModel;
+﻿using System.Collections.ObjectModel;
 using CTTDNUG.Data.Helpers;
+using CTTDNUG.Model;
+using Newtonsoft.Json;
+using RestSharp;
 
 namespace CTTDNUG.Data
 {
