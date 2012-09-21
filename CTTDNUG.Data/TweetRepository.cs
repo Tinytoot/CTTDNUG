@@ -1,9 +1,9 @@
 ﻿using System.Collections.ObjectModel;
+using System.Net;
 using CTTDNUG.Data.Helpers;
 using CTTDNUG.Model;
 using Newtonsoft.Json;
 using RestSharp;
-using System.Net;
 
 namespace CTTDNUG.Data
 {

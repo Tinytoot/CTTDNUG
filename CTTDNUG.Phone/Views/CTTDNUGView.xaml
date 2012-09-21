@@ -19,7 +19,7 @@
     <!--LayoutRoot is the root grid where all page content is placed-->
     <Grid x:Name="LayoutRoot" Background="Transparent">
         <Grid.Resources>
-            <local:HtmlToStringFormatConverter x:Key="ntmlToString"/>
+            <local:HtmlToStringFormatConverter x:Key="HtmlToString"/>
         </Grid.Resources>
             <!--Panorama control-->
         <controls:Panorama Title="CTTDNUG">
@@ -39,7 +39,7 @@
                              <StackPanel>
                                 <TextBlock Text="{Binding event.title}" TextWrapping="Wrap" Style="{StaticResource PhoneTextExtraLargeStyle}"/>
                                 <TextBlock Text="{Binding event.end_date}" TextWrapping="Wrap" Style="{StaticResource PhoneTextSubtleStyle}"/>
-                                <TextBlock Text="{Binding event.description, Converter={StaticResource htmlToString}}" TextWrapping="Wrap" Margin="12,-6,12,0" Style="{StaticResource PhoneTextSubtleStyle}"/>
+                                <TextBlock Text="{Binding event.description, Converter={StaticResource HtmlToString}}" TextWrapping="Wrap" Margin="12,-6,12,0" Style="{StaticResource PhoneTextSubtleStyle}"/>
                              </StackPanel>
                         </DataTemplate>
                     </ListBox.ItemTemplate>
