@@ -19,11 +19,7 @@
     <!--LayoutRoot is the root grid where all page content is placed-->
     <Grid x:Name="LayoutRoot" Background="Transparent">
         <Grid.Resources>
-<<<<<<< HEAD
             <local:HtmlToStringFormatConverter x:Key="HtmlToString"/>
-=======
-            <local:HtmlToStringFormatConverter x:Key="htmlToString"/>
->>>>>>> origin/DEV
         </Grid.Resources>
             <!--Panorama control-->
         <controls:Panorama Title="CTTDNUG">
