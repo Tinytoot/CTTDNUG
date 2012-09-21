@@ -19,7 +19,11 @@
     <!--LayoutRoot is the root grid where all page content is placed-->
     <Grid x:Name="LayoutRoot" Background="Transparent">
         <Grid.Resources>
+<<<<<<< HEAD
             <local:HtmlToStringFormatConverter x:Key="HtmlToString"/>
+=======
+            <local:HtmlToStringFormatConverter x:Key="htmlToString"/>
+>>>>>>> origin/DEV
         </Grid.Resources>
             <!--Panorama control-->
         <controls:Panorama Title="CTTDNUG">
@@ -71,6 +75,25 @@
                     </ListBox.ItemTemplate>
                 </ListBox>
             </controls:PanoramaItem>
+
+            <controls:PanoramaItem Header="About">
+                <Grid x:Name="ContentPanel" Grid.Row="1" Margin="16,8,8,-8">
+                    <TextBlock Margin="25,23,25,0" FontSize="28" d:LayoutOverrides="Width" Text="CTTDNUG" Width="380" Height="49" 
+                               HorizontalAlignment="Center" TextAlignment="Center" VerticalAlignment="Top"></TextBlock>
+
+                    <Button Content="Help and Support" HorizontalAlignment="Center" Margin="75,165,87,0" Name="Support" VerticalAlignment="Top" 
+                            Width="270" FontSize="18" Click="Support_Click" />
+                    <Button Content="Rate and Review" HorizontalAlignment="Center" Margin="75,245,87,0" Name="Review" VerticalAlignment="Top" 
+                            Width="270" FontSize="18" Click="Review_Click" />
+                    <Button Content="View My Other Apps" HorizontalAlignment="Center" Margin="75,325,87,0" Name="OtherApps" VerticalAlignment="Top" 
+                            Width="270" FontSize="18" Click="OtherApps_Click" />
+
+                    <TextBlock Height="49" Margin="50,0,50,23" TextWrapping="Wrap" VerticalAlignment="Bottom" FontSize="16" 
+                               Text="Designed and engineered by Tom Walker&#x0a;Copyright © 2012 All Rights Reserved." 
+                               d:LayoutOverrides="Width" HorizontalAlignment="Center" Width="333" TextAlignment="Center" />
+                </Grid>
+            </controls:PanoramaItem>
+
         </controls:Panorama>
     </Grid>
 </phone:PhoneApplicationPage>
