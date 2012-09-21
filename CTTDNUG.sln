@@ -1,11 +1,18 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 11.00
-# Visual Studio 2010 Express for Windows Phone
+# Visual Studio 2010
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CTTDNUG.Phone", "CTTDNUG.Phone\CTTDNUG.Phone.csproj", "{C231F7B6-9E23-48AB-BB4E-18BC61FB2B2B}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CTTDNUG.Model", "CTTDNUG.Model\CTTDNUG.Model.csproj", "{70BFA376-1A9F-41B4-86AA-DAED013AAD59}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CTTDNUG.Data", "CTTDNUG.Data\CTTDNUG.Data.csproj", "{0D257746-7B8C-4EDF-A894-4B20AE18CC41}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = ".nuget", ".nuget", "{2A53CF9C-FC39-45BF-AE4F-CDA0F6B6511E}"
+	ProjectSection(SolutionItems) = preProject
+		.nuget\NuGet.Config = .nuget\NuGet.Config
+		.nuget\NuGet.exe = .nuget\NuGet.exe
+		.nuget\NuGet.targets = .nuget\NuGet.targets
+	EndProjectSection
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
