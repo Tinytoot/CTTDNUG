@@ -53,6 +53,8 @@ namespace CTTDNUG.Data
                                  where DateTime.Parse(ev.@event.end_date) >= DateTime.Now
                                  select ev).ToList();
 
+            
+
             query.ForEach(x => currentEvents.Add(x));
             
             return currentEvents;

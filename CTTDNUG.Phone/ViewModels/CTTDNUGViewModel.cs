@@ -61,10 +61,27 @@ namespace CTTDNUG.Phone.ViewModels
                 if (eventError != value)
                 {
                     eventError = value;
-                    RaisePropertyChanged("LoadingEventError");
+                    RaisePropertyChanged("EventError");
                 }
             }
         }
+
+
+        private bool tweetError = false;
+        public bool TweetError
+        {
+            get { return tweetError; }
+
+            set
+            {
+                if (tweetError != value)
+                {
+                    tweetError = value;
+                    RaisePropertyChanged("TweetError");
+                }
+            }
+        }
+        
 
       
         public event PropertyChangedEventHandler PropertyChanged;
@@ -85,38 +102,46 @@ namespace CTTDNUG.Phone.ViewModels
         public void LoadTweets()
         {
             var tweetRepository = new TweetRepository();
-            tweetRepository.GotTweets += new TweetRepository.GetTweetsCompleted(GotTheTweets);
+            tweetRepository.success += new TweetRepository.GetTweetsCompleted(TweetsLoadSuccessful);
+            tweetRepository.failure += new TweetRepository.GetTweetsErrored(TweetsLoadFailed);
             tweetRepository.GetTweets("#CTTDNUG");
         }
 
         public void LoadEvents()
         {
             var eventRepository = new EventRepository();
-            eventRepository.success += new EventRepository.GetEventsCompleted(GetCurrentEvents);
-            eventRepository.failure += new EventRepository.GetEventsErrored(LoadingEventError);
+            eventRepository.success += new EventRepository.GetEventsCompleted(EventLoadSucessful);
+            eventRepository.failure += new EventRepository.GetEventsErrored(EventLoadFailed);
             eventRepository.GetEvents();
         }
 
-        void GetCurrentEvents(ObservableCollection<Event> response)
+        void EventLoadSucessful(ObservableCollection<Event> response)
         {
             events = response;
             RaisePropertyChanged("Events");
                
         }
 
-        void LoadingEventError(string error)
+        void EventLoadFailed(string error)
         {
             eventError = true;
-            RaisePropertyChanged("LoadingEventError");
+            RaisePropertyChanged("EventError");
         }
 
 
-        void GotTheTweets(ObservableCollection<Tweet> newTweets)
+        void TweetsLoadSuccessful(ObservableCollection<Tweet> newTweets)
         {
             tweets = newTweets;
             RaisePropertyChanged("Tweets");
 
          }
+
+        void TweetsLoadFailed(string error)
+        {
+            tweetError = true;
+            RaisePropertyChanged("TweetError");
+
+        }
 
     }
 }
